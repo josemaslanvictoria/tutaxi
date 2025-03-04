@@ -1,33 +1,9 @@
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        .language-selector {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .language-dropdown {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 10px;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .language-dropdown img {
-            display: block;
-            width: 30px;
-            height: 20px;
-            padding: 5px;
-            cursor: pointer;
-        }
-        .language-dropdown img:hover {
-            background: #f0f0f0;
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Online</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,7 +17,7 @@
             margin: auto;
             padding: 20px;
         }
-        input {
+        input, select, button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -49,13 +25,10 @@
             border-radius: 5px;
         }
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: yellow;
+            background-color: green;
             border: none;
             font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
         }
         .language-selector {
             position: fixed;
@@ -95,84 +68,60 @@
 </head>
 <body>
     <div class="language-selector" onclick="toggleLanguageDropdown()">
-        <img src="spain-flag.png" alt="Español" width="40" height="30">
+        <img src="https://s2.qwant.com/thumbr/474x315/6/8/0f5d2163e27da4adba4e728db1107765915325d88cb93a5e3d7f36fb2331ed/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.oIM57INwTOWATSQCy3VQiQHaE7%26pid%3DApi&q=0&b=1&p=0&a=0" alt="Español" onerror="this.src='default-flag.png'" width="50" height="35" style="border: 1px solid black;">
         <div class="language-dropdown" id="languageDropdown">
-            <img src="uk-flag.png" alt="English" onclick="changeLanguage('en')">
-            <img src="france-flag.png" alt="Français" onclick="changeLanguage('fr')">
-            <img src="germany-flag.png" alt="Deutsch" onclick="changeLanguage('de')">
+            <img src="https://s2.qwant.com/thumbr/474x237/d/0/68d383ed77736a7c1fe3fc856d32e1ee6f95a2eba7b1a4dd2d5dfd9f4a740f/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.dT7zNPD3pRMWOiZfjh1qRQHaDt%26pid%3DApi&q=0&b=1&p=0&a=0" alt="English" onclick="changeLanguage('en')">
+            
+            
+        
+            <img src="https://s1.qwant.com/thumbr/474x316/1/8/130d514b14d8b2e938790cb7773020b7db2eccf720a88b0c76b1a4f47a2e44/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.cxTsq55Y3CbUgSYGeAbu-AHaE8%26pid%3DApi&q=0&b=1&p=0&a=0" alt="Русский" onclick="changeLanguage('ru')">
         </div>
-    </div>
     <header>
-        <h1 style="font-size: 2.5em; color: #ffcc00; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); text-align: center;">🚖 ¡Bienvenido a Taxi Online! 🚖</h1>
-        <p style="text-align: center; font-size: 1.2em; color: #333; max-width: 600px; margin: auto;">
-            Somos una empresa con años de experiencia en el transporte, ofreciendo servicio de taxis confiable y seguro. 
-            Disponemos de una amplia variedad de vehículos para adaptarnos a tus necesidades, desde autos estándar hasta vehículos de lujo y transporte accesible.
-        </p>
-        <p>Solicita tu taxi de manera rápida y sencilla.</p>
-        <p style="text-align: center; font-size: 1.2em; color: #333; max-width: 600px; margin: auto;">
-            Somos una empresa con años de experiencia en el transporte, ofreciendo servicio de taxis confiable y seguro. 
-            Disponemos de una amplia variedad de vehículos para adaptarnos a tus necesidades, desde autos estándar hasta vehículos de lujo y transporte accesible.
-        </p>
-        <h1 style="font-size: 2.5em; color: #ffcc00; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); text-align: center;">🚖 ¡Bienvenido a Taxi Online! 🚖</h1>
+        <h1>🚖 ¡Bienvenido a Taxi Online! 🚖</h1>
         <p>Solicita tu taxi de manera rápida y sencilla.</p>
     </header>
-    
     <main>
         <section>
             <h2>🛣️ Selecciona tu origen y destino</h2>
             <div style="display: flex; justify-content: center; gap: 10px;">
-                <select id="origen" style="width: 45%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <select id="origen">
                     <option value="">Selecciona origen</option>
-                    <!-- Opciones a definir -->
                 </select>
-                <select id="destino" style="width: 45%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <select id="destino">
                     <option value="">Selecciona destino</option>
-                    <!-- Opciones a definir -->
                 </select>
             </div>
         </section>
         <section>
             <h2>📍 Ingresa tu ubicación o usa tu ubicación actual</h2>
-            <button onclick="obtenerUbicacion()" style="width: 100%; padding: 10px; margin-bottom: 10px; background-color: lightblue; border: none; font-size: 16px; cursor: pointer; border-radius: 5px;">📍 Usar mi ubicación actual</button>
+            <button onclick="obtenerUbicacion()">📍 Usar mi ubicación actual</button>
             <input type="text" id="ubicacion" placeholder="Ingresa tu dirección">
             <div class="g-recaptcha" data-sitekey="TU_CLAVE_SITE_KEY"></div>
-            <button onclick="pedirTaxi()">Pedir Taxi</button>
+            <button onclick="pedirTaxi()" style="background-color: yellow;">Pedir Taxi</button>
         </section>
-        
         <section id="estadoPedido" style="display:none;">
             <h2>🚕 Tu taxi está en camino...</h2>
             <p>Por favor, espera un momento mientras encontramos un conductor disponible.</p>
         </section>
     </main>
-    
     <footer>
         <p>&copy; 2025 Taxi Online - Todos los derechos reservados.</p>
-        <p>
-        📲 ¿Necesitas ayuda? <a href="https://wa.me/TU_NUMERO_DE_WHATSAPP" target="_blank" style="color: green; font-weight: bold; text-decoration: none;">Chatea con nosotros en WhatsApp Business</a>
-    </p>
-</footer>
-    
-    <script src="script.js"></script>
+        <p>📲 ¿Necesitas ayuda? <a href="https://wa.me/TU_NUMERO_DE_WHATSAPP" target="_blank">Chatea con nosotros en WhatsApp Business</a></p>
+    </footer>
     <script>
         function toggleLanguageDropdown() {
             var dropdown = document.getElementById('languageDropdown');
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
-
         function changeLanguage(lang) {
             alert('Idioma cambiado a: ' + lang);
-            // Aquí puedes agregar lógica para cambiar el idioma de la página
         }
-    </script>
-    <script>
         function obtenerUbicacion() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
-                    var latitud = position.coords.latitude;
-                    var longitud = position.coords.longitude;
-                    document.getElementById('ubicacion').value = `Lat: ${latitud}, Lon: ${longitud}`;
-                }, function(error) {
-                    alert('No se pudo obtener la ubicación. Asegúrate de permitir el acceso a la ubicación en tu navegador.');
+                    document.getElementById('ubicacion').value = `Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`;
+                }, function() {
+                    alert('No se pudo obtener la ubicación.');
                 });
             } else {
                 alert('Tu navegador no soporta geolocalización.');
@@ -181,4 +130,3 @@
     </script>
 </body>
 </html>
-
