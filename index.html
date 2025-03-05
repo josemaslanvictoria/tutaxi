@@ -2,23 +2,6 @@
 <html lang="es">
 <head>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        function calcularPrecio() {
-            var destino = document.getElementById('destino').value;
-            var precios = {
-                'Aeropuerto de Málaga': '25 € - 35 €',
-                'Marbella': '60 € - 85 €',
-                'Granada': '135 € - 175 €'
-            };
-            var precioTexto = document.getElementById('precioTaxi');
-            if (precios[destino]) {
-                precioTexto.textContent = 'Precio: ' + precios[destino];
-                precioTexto.style.display = 'block';
-            } else {
-                precioTexto.textContent = 'Precio no disponible';
-                precioTexto.style.display = 'block';
-            }
-        }
-        document.getElementById('destino').addEventListener('change', calcularPrecio);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taxi Online</title>
     <style>
@@ -34,7 +17,7 @@
             margin: auto;
             padding: 20px;
         }
-        input, select, button {
+        input, select, button, textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -65,11 +48,11 @@
         }
         @media (max-width: 600px) {
             h1 {
-            font-size: 1.8em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
+                font-size: 1.8em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
             }
             input, button {
                 font-size: 16px;
@@ -78,137 +61,89 @@
     </style>
 </head>
 <body style="overflow-y: auto;">
-    <div class="language-selector" onclick="toggleLanguageDropdown()">
-        <img src="https://s2.qwant.com/thumbr/474x315/6/8/0f5d2163e27da4adba4e728db1107765915325d88cb93a5e3d7f36fb2331ed/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.oIM57INwTOWATSQCy3VQiQHaE7%26pid%3DApi&q=0&b=1&p=0&a=0" alt="Español" onerror="this.src='default-flag.png'" width="50" height="35" style="border: 1px solid black;">
-        <div class="language-dropdown" id="languageDropdown">
-            <img src="https://s2.qwant.com/thumbr/474x237/d/0/68d383ed77736a7c1fe3fc856d32e1ee6f95a2eba7b1a4dd2d5dfd9f4a740f/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.dT7zNPD3pRMWOiZfjh1qRQHaDt%26pid%3DApi&q=0&b=1&p=0&a=0" alt="English" onclick="changeLanguage('en')">
-            
-            
-        
-            <img src="https://s1.qwant.com/thumbr/474x316/1/8/130d514b14d8b2e938790cb7773020b7db2eccf720a88b0c76b1a4f47a2e44/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.cxTsq55Y3CbUgSYGeAbu-AHaE8%26pid%3DApi&q=0&b=1&p=0&a=0" alt="Русский" onclick="changeLanguage('ru')">
-        </div>
     <header>
-        <h1>🚖 ¡Bienvenido a Taxi Online! 🚖</h1>
-        <p>Solicita tu taxi de manera rápida y sencilla.</p>
+        <h1>🚖 <u>¡Bienvenido a Taxi Online!</u> 🚖</h1>
+        <p><span style="font-weight: bold;">Solicita tu taxi de manera rápida y sencilla.</span></p>
+        <p style="font-size: 14px; text-align: justify; margin-top: 10px;">
+            Reserva tu taxi con nosotros y disfruta de un servicio confiable, rápido y seguro. 
+            Nuestros precios transparentes y conductores profesionales garantizan un traslado cómodo 
+            desde Málaga al Aeropuerto, Marbella y Granada. ¡Viaja sin preocupaciones con Taxi Online!
+        </p>
     </header>
-    <button onclick="toggleTarifas()" style="background-color: #007bff; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Ver precios</button>
-    <section id="tarifas" style="display: none;">
-        <h2>Tarifas Taxi Málaga 2025 - Aeropuerto</h2>
-        <table style="width: 100%; border-collapse: collapse; text-align: center;">
-            <thead>
-                <tr style="background-color: #f0f0f0;">
-                    <th style="border: 1px solid #ccc; padding: 10px;">Destino</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">1 a 4 Personas</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">5 a 8 Personas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Adra</td><td style="border: 1px solid #ccc; padding: 10px;">160 €</td><td style="border: 1px solid #ccc; padding: 10px;">225 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Alameda</td><td style="border: 1px solid #ccc; padding: 10px;">80 €</td><td style="border: 1px solid #ccc; padding: 10px;">110 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Algarrobo-Costa</td><td style="border: 1px solid #ccc; padding: 10px;">55 €</td><td style="border: 1px solid #ccc; padding: 10px;">80 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Alcaidesa</td><td style="border: 1px solid #ccc; padding: 10px;">115 €</td><td style="border: 1px solid #ccc; padding: 10px;">160 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Algeciras</td><td style="border: 1px solid #ccc; padding: 10px;">125 €</td><td style="border: 1px solid #ccc; padding: 10px;">175 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Alhaurín de la Torre</td><td style="border: 1px solid #ccc; padding: 10px;">25 €</td><td style="border: 1px solid #ccc; padding: 10px;">35 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Alhaurín el Grande</td><td style="border: 1px solid #ccc; padding: 10px;">40 €</td><td style="border: 1px solid #ccc; padding: 10px;">56 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Álora</td><td style="border: 1px solid #ccc; padding: 10px;">50 €</td><td style="border: 1px solid #ccc; padding: 10px;">70 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Almería</td><td style="border: 1px solid #ccc; padding: 10px;">215 €</td><td style="border: 1px solid #ccc; padding: 10px;">300 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Almerimar</td><td style="border: 1px solid #ccc; padding: 10px;">185 €</td><td style="border: 1px solid #ccc; padding: 10px;">260 €</td></tr>
-                <tr><td style="border: 1px solid #ccc; padding: 10px;">Almuñécar</td><td style="border: 1px solid #ccc; padding: 10px;">90 €</td><td style="border: 1px solid #ccc; padding: 10px;">125 €</td></tr>
-                <tr><td colspan="3" style="border: 1px solid #ccc; padding: 10px; background-color: #f0f0f0;">... (Más destinos disponibles)</td></tr>
-            </tbody>
-        </table>
-    
-        <h2>Tarifas Taxi Málaga 2025 - Aeropuerto</h2>
-        <table style="width: 100%; border-collapse: collapse; text-align: center;">
-            <thead>
-                <tr style="background-color: #f0f0f0;">
-                    <th style="border: 1px solid #ccc; padding: 10px;">Destino</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">1 a 4 Personas</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">5 a 8 Personas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Adra</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">160 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">225 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Alameda</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">80 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">110 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Algarrobo-Costa</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">55 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">80 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Alcaidesa</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">115 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">160 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Algeciras</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">125 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">175 €</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <script>
-        function toggleTarifas() {
-            var tarifas = document.getElementById('tarifas');
-            tarifas.style.display = tarifas.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
-    <section>
-        <h2>Tarifas Taxi Málaga 2025 - Aeropuerto</h2>
-        <table style="width: 100%; border-collapse: collapse; text-align: center;">
-            <thead>
-                <tr style="background-color: #f0f0f0;">
-                    <th style="border: 1px solid #ccc; padding: 10px;">Destino</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">1 a 4 Personas</th>
-                    <th style="border: 1px solid #ccc; padding: 10px;">5 a 8 Personas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Adra</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">160 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">225 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Alameda</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">80 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">110 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Algarrobo-Costa</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">55 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">80 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Alcaidesa</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">115 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">160 €</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 10px;">Algeciras</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">125 €</td>
-                    <td style="border: 1px solid #ccc; padding: 10px;">175 €</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
     <main>
         <section>
-            <h2>🛣️ Selecciona tu origen y destino</h2>
-            <p>Selecciona tu origen y destino para calcular el precio del viaje.</p>
-            <p id="precioTaxi" style="font-size: 18px; font-weight: bold; color: red; display: none;">Precio: </p>
-            <div style="display: flex; justify-content: center; gap: 10px;">
-                <select id="pasajeros">
-                    <option value="">Selecciona número de pasajeros</option>
+            <h3>💰 Tarifas desde Málaga</h3>
+            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <button onclick="toggleTablaPrecios()" style="background-color: #007bff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Ver precios</button>
+            </div>
+            <script>
+                function toggleTablaPrecios() {
+                    var tabla = document.getElementById('tabla-precios-completa');
+                    if (tabla.style.display === 'none' || tabla.style.display === '') {
+                        tabla.style.display = 'table';
+                    } else {
+                        tabla.style.display = 'none';
+                    }
+                }
+            </script>
+            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <button onclick="window.location.href='#tabla-precios'" style="background-color: #007bff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Ver precios</button>
+            </div>
+            
+            <script>
+                function togglePrecios() {
+            window.location.href = '#tabla-precios';
+                    var tabla = document.querySelector('table');
+                    if (tabla.style.display === 'none') {
+                        tabla.style.display = 'table';
+                    } else {
+                        tabla.style.display = 'none';
+                    }
+                }
+            </script>
+            <table id="tabla-precios" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 14px; margin-bottom: 5px;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="border: 1px solid #ccc; padding: 8px;">Destino</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Precio<br><span style='font-size: 12px; display: flex; justify-content: space-around;'><span>1-4</span><span>5-9</span></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ccc; padding: 8px;">Aeropuerto de Málaga</td>
+                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>25 €</span><span>35 €</span></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ccc; padding: 8px;">Marbella</td>
+                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>60 €</span><span>85 €</span></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ccc; padding: 8px;">Granada</td>
+                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>135 €</span><span>175 €</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>🛣️ <span style="text-decoration: underline; color: black;">Reservar</span></h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin: auto;">
+                <input list="origenes" id="origen" placeholder="Selecciona origen" style="width: 48%; padding: 8px;">
+                <datalist id="origenes">
+                    <option value="Málaga">
+                    <option value="Aeropuerto de Málaga">
+                    <option value="Marbella">
+                    <option value="Granada">
+                </datalist>
+                <input list="destinos" id="destino" placeholder="Selecciona destino" style="width: 48%; padding: 8px; margin-left: 10px;">
+                <datalist id="destinos">
+                    <option value="Aeropuerto de Málaga">
+                    <option value="Marbella">
+                    <option value="Granada">
+                </datalist>
+            </div>
+            
+                <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
+                <select id="pasajeros" style="width: 30%; padding: 8px; text-align: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin: auto;">
+                    <option value="">Pasajeros</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -219,69 +154,25 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                 </select>
-                <select id="origen">
-                    <option value="">Selecciona origen</option>
                 </select>
-                <select id="destino">
-                    <option value="Adra">Adra</option>
-                    <option value="Alameda">Alameda</option>
-                    <option value="Algarrobo-Costa">Algarrobo-Costa</option>
-                    <option value="Alcaidesa">Alcaidesa</option>
-                    <option value="Algeciras">Algeciras</option>
-                    <option value="Alhaurín de la Torre">Alhaurín de la Torre</option>
-                    <option value="Alhaurín el Grande">Alhaurín el Grande</option>
-                    <option value="Álora">Álora</option>
-                    <option value="Almería">Almería</option>
-                    <option value="Almerimar">Almerimar</option>
-                    <option value="Almuñécar">Almuñécar</option>
-                    <option value="Antequera">Antequera</option>
-                    <option value="Ardales">Ardales</option>
-                    <option value="Arroyo de la Miel">Arroyo de la Miel</option>
-                    <option value="Atalaya Park">Atalaya Park</option>
-                    <option value="Benagalbón">Benagalbón</option>
-                    <option value="Benahavis">Benahavis</option>
-                    <option value="Benajarafe">Benajarafe</option>
-                    <option value="Benalmadena Costa">Benalmadena Costa</option>
-                    <option value="Benalmadena Pueblo">Benalmadena Pueblo</option>
-                    <option value="">Selecciona destino</option>
-                </select>
+                <input type="date" id="fecha" style="width: 30%; padding: 8px; text-align: center;">
+                <input type="time" id="hora" style="width: 30%; padding: 8px; text-align: center;">
+                </div>
+                </div>
+                <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
+                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)" style="width: 45%; padding: 8px; margin-right: 10px;">
+                <textarea id="extras" placeholder="Detalles adicionales" style="width: 45%; padding: 8px;"></textarea>
             </div>
-                <input type="text" id="nombre" placeholder="Nombre de contacto" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <input type="tel" id="telefono" placeholder="Número de teléfono" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <input type="date" id="fecha" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <input type="time" id="hora" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <textarea id="extras" placeholder="Indica detalles adicionales (ej. silla de bebé, equipaje extra)" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+            </div>
         </section>
-        <section>
-            <h2>📍 Ingresa tu ubicación o usa tu ubicación actual</h2>
-            <button onclick="obtenerUbicacion()">📍 Usar mi ubicación actual</button>
-            <input type="text" id="ubicacion" placeholder="Ingresa tu dirección">
-            <div class="g-recaptcha" data-sitekey="TU_CLAVE_SITE_KEY"></div>
-            <button onclick="pedirTaxi()" style="background-color: yellow;">Pedir Taxi</button>
-        </section>
-        <section id="estadoPedido" style="display:none;">
-            <h2>🚕 Tu taxi está en camino...</h2>
-            <p>Por favor, espera un momento mientras encontramos un conductor disponible.</p>
-        </section>
+        <p id="precioTaxi" style="font-size: 18px; font-weight: bold; color: red; display: none;">Precio: </p>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <button onclick="reservarTaxi()" style="width: 50%;">Reservar</button>
+        </div>
     </main>
-    <button onclick="reservarTaxi()" style="background-color: #007bff; color: white; font-size: 18px; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Reservar</button>
     <script>
         function reservarTaxi() {
             var telefonoWhatsApp = '34646571229';
-            var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
-            mensaje += '*Nombre:* ' + document.getElementById('nombre').value + '%0A';
-            mensaje += '*Teléfono:* ' + document.getElementById('telefono').value + '%0A';
-            mensaje += '*Origen:* ' + document.getElementById('origen').value + '%0A';
-            mensaje += '*Destino:* ' + document.getElementById('destino').value + '%0A';
-            mensaje += '*Pasajeros:* ' + document.getElementById('pasajeros').value + '%0A';
-            mensaje += '*Fecha:* ' + document.getElementById('fecha').value + '%0A';
-            mensaje += '*Hora:* ' + document.getElementById('hora').value + '%0A';
-            mensaje += '*Número de vuelo:* ' + document.getElementById('vuelo').value + '%0A';
-            mensaje += '*Extras:* ' + document.getElementById('extras').value + '%0A';
-
-            var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
-            window.open(enlaceWhatsApp, '_blank');
             var origen = document.getElementById('origen').value;
             var destino = document.getElementById('destino').value;
             var pasajeros = document.getElementById('pasajeros').value;
@@ -289,23 +180,21 @@
             var hora = document.getElementById('hora').value;
             var vuelo = document.getElementById('vuelo').value;
             var extras = document.getElementById('extras').value;
-            
-            if (origen && destino && pasajeros && fecha && hora) && nombre && telefono {
-                alert('¡Reserva confirmada!
 
-Origen: ' + origen + '
-Destino: ' + destino + '
-Pasajeros: ' + pasajeros + '
-Fecha: ' + fecha + '
-Hora: ' + hora + '
-Número de vuelo: ' + vuelo + '
-Extras: ' + extras);
+            if ((origen && destino && pasajeros && fecha && hora) && vuelo && extras) {
+                var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
+                mensaje += '*Origen:* ' + origen + '%0A';
+                mensaje += '*Destino:* ' + destino + '%0A';
+                mensaje += '*Pasajeros:* ' + pasajeros + '%0A';
+                mensaje += '*Fecha:* ' + fecha + '%0A';
+                mensaje += '*Hora:* ' + hora + '%0A';
+                mensaje += '*Número de vuelo:* ' + vuelo + '%0A';
+                mensaje += '*Extras:* ' + extras + '%0A';
+                
+                var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
+                window.open(enlaceWhatsApp, '_blank');
             } else {
-                alert('Por favor, completa todos los campos obligatorios (origen, destino, pasajeros, fecha y hora).');
-            if (!nombre || !telefono) {
-                alert('Por favor, ingresa tu nombre y número de teléfono.');
-                return;
-            }
+                alert('Por favor, completa todos los campos obligatorios.');
             }
         }
     </script>
@@ -313,30 +202,11 @@ Extras: ' + extras);
         <p>&copy; 2025 Taxi Online - Todos los derechos reservados.</p>
         <p>📲 ¿Necesitas ayuda? <a href="https://wa.me/34646571229" target="_blank">Chatea con nosotros en WhatsApp Business</a></p>
     </footer>
-    <script>
-        function toggleLanguageDropdown() {
-            var dropdown = document.getElementById('languageDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-        function changeLanguage(lang) {
-            alert('Idioma cambiado a: ' + lang);
-        }
-        function obtenerUbicacion() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    document.getElementById('ubicacion').value = `Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`;
-                }, function() {
-                    alert('No se pudo obtener la ubicación.');
-                });
-            } else {
-                alert('Tu navegador no soporta geolocalización.');
-            }
-        }
-    </script>
-<a href="https://wa.me/34646571229" target="_blank" class="whatsapp-button">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30" style="vertical-align: middle; margin-right: 10px;">
-    Contactar
-</a>
+</body>
+    <a href="https://wa.me/34646571229" target="_blank" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30" style="vertical-align: middle; margin-right: 10px;">
+        Contactar
+    </a>
     <style>
         .whatsapp-button {
             position: fixed;
@@ -351,12 +221,15 @@ Extras: ' + extras);
             border-radius: 50px;
             text-decoration: none;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
             transition: background-color 0.3s ease;
         }
         .whatsapp-button:hover {
             background-color: #1ebe57;
         }
     </style>
-</body>
 </html>
+
 
