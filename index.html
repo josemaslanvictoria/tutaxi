@@ -94,6 +94,16 @@
         #tabla-precios th {
             background-color: #f0f0f0;
         }
+        .telefono-destacado {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.5em;
@@ -104,6 +114,9 @@
             }
             input, button {
                 font-size: 16px;
+            }
+            .telefono-destacado {
+                font-size: 20px;
             }
         }
     </style>
@@ -124,27 +137,124 @@
             <thead>
                 <tr>
                     <th>Destino</th>
-                    <th>Precio<br><span style='font-size: 12px; display: flex; justify-content: space-around;'><span>1-4</span><span>5-9</span></span></th>
+                    <th>1 a 4 personas</th>
+                    <th>5 a 8 personas</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Aeropuerto de Málaga</td>
-                    <td style="display: flex; justify-content: space-around;"><span>25 €</span><span>35 €</span></td>
-                </tr>
-                <tr>
-                    <td>Marbella</td>
-                    <td style="display: flex; justify-content: space-around;"><span>60 €</span><span>85 €</span></td>
-                </tr>
-                <tr>
-                    <td>Granada</td>
-                    <td style="display: flex; justify-content: space-around;"><span>135 €</span><span>175 €</span></td>
-                </tr>
+                <!-- Lista completa de precios aquí -->
+                <tr><td>Adra</td><td>160 €</td><td>225 €</td></tr>
+                <tr><td>Alameda</td><td>80 €</td><td>110 €</td></tr>
+                <tr><td>Algarrobo-Costa</td><td>55 €</td><td>80 €</td></tr>
+                <tr><td>Alcaidesa</td><td>115 €</td><td>160 €</td></tr>
+                <tr><td>Algeciras</td><td>125 €</td><td>175 €</td></tr>
+                <tr><td>Alhaurín de la Torre</td><td>25 €</td><td>35 €</td></tr>
+                <tr><td>Alhaurín el Grande</td><td>40 €</td><td>56 €</td></tr>
+                <tr><td>Álora</td><td>50 €</td><td>70 €</td></tr>
+                <tr><td>Almería</td><td>215 €</td><td>300 €</td></tr>
+                <tr><td>Almerimar</td><td>185 €</td><td>260 €</td></tr>
+                <tr><td>Almuñécar</td><td>90 €</td><td>125 €</td></tr>
+                <tr><td>Antequera</td><td>60 €</td><td>85 €</td></tr>
+                <tr><td>Ardales</td><td>60 €</td><td>85 €</td></tr>
+                <tr><td>Arroyo de la Miel</td><td>30 €</td><td>40 €</td></tr>
+                <tr><td>Atalaya Park</td><td>70 €</td><td>98 €</td></tr>
+                <tr><td>Benagalbón</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Benahavis</td><td>80 €</td><td>110 €</td></tr>
+                <tr><td>Benajarafe</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Benalmadena Costa</td><td>30 €</td><td>40 €</td></tr>
+                <tr><td>Benalmadena Pueblo</td><td>30 €</td><td>40 €</td></tr>
+                <tr><td>Cabo de Gata (San José)</td><td>255 €</td><td>355 €</td></tr>
+                <tr><td>Cabopino / Las Chapas</td><td>50 €</td><td>70 €</td></tr>
+                <tr><td>Cádiz</td><td>225 €</td><td>315 €</td></tr>
+                <tr><td>Cala de Mijas</td><td>45 €</td><td>65 €</td></tr>
+                <tr><td>Cala del Moral</td><td>35 €</td><td>50 €</td></tr>
+                <tr><td>Calahonda / Miraflores / Mijas</td><td>48 €</td><td>70 €</td></tr>
+                <tr><td>Cártama</td><td>30 €</td><td>45 €</td></tr>
+                <tr><td>Caleta de Vélez</td><td>55 €</td><td>77 €</td></tr>
+                <tr><td>Caminito del Rey</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Campillos</td><td>80 €</td><td>110 €</td></tr>
+                <tr><td>Cancelada</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Casabermeja</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Casares</td><td>95 €</td><td>130 €</td></tr>
+                <tr><td>Chilches</td><td>40 €</td><td>56 €</td></tr>
+                <tr><td>Club la Costa</td><td>43 €</td><td>60 €</td></tr>
+                <tr><td>Coín</td><td>45 €</td><td>63 €</td></tr>
+                <tr><td>Cómpeta</td><td>70 €</td><td>98 €</td></tr>
+                <tr><td>Conil</td><td>210 €</td><td>295 €</td></tr>
+                <tr><td>Chiclana de la Frontera</td><td>215 €</td><td>300 €</td></tr>
+                <tr><td>Córdoba</td><td>170 €</td><td>240 €</td></tr>
+                <tr><td>El Chorro</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Elviria</td><td>55 €</td><td>77 €</td></tr>
+                <tr><td>Estepona (Marriot playa andaluza)</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Estepona (Elba Gran Hotel/ Hotel Fuerte)</td><td>85 €</td><td>120 €</td></tr>
+                <tr><td>Frigiliana</td><td>70 €</td><td>98 €</td></tr>
+                <tr><td>Fuengirola</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Gaucín</td><td>120 €</td><td>170 €</td></tr>
+                <tr><td>Gibraltar (Frontera)</td><td>125 €</td><td>175 €</td></tr>
+                <tr><td>Granada (Centro)</td><td>135 €</td><td>175 €</td></tr>
+                <tr><td>Granada (Sierra nevada)</td><td>170 €</td><td>240 €</td></tr>
+                <tr><td>Huelva</td><td>310 €</td><td>430 €</td></tr>
+                <tr><td>Jaén</td><td>215 €</td><td>300 €</td></tr>
+                <tr><td>Jerez de la Frontera</td><td>220 €</td><td>310 €</td></tr>
+                <tr><td>La Herradura</td><td>85 €</td><td>120 €</td></tr>
+                <tr><td>La línea de la Concepción</td><td>120 €</td><td>170 €</td></tr>
+                <tr><td>La Mamola</td><td>135 €</td><td>190 €</td></tr>
+                <tr><td>Loja</td><td>80 €</td><td>110 €</td></tr>
+                <tr><td>Lucena</td><td>105 €</td><td>145 €</td></tr>
+                <tr><td>Centro de Málaga</td><td>25 €</td><td>35 €</td></tr>
+                <tr><td>Málaga puerto</td><td>25 €</td><td>35 €</td></tr>
+                <tr><td>Manilva</td><td>95 €</td><td>135 €</td></tr>
+                <tr><td>Marbella (centro)</td><td>60 €</td><td>85 €</td></tr>
+                <tr><td>Marbella (Los monteros/ Río Real)</td><td>58 €</td><td>81 €</td></tr>
+                <tr><td>Marbella (Golden Mille / Naguelles)</td><td>65 €</td><td>90 €</td></tr>
+                <tr><td>Marbella (Quinta)</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Marbella (Hotel Villa Padierna)</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>Maro</td><td>70 €</td><td>98 €</td></tr>
+                <tr><td>Mijas (Pueblo)</td><td>45 €</td><td>65 €</td></tr>
+                <tr><td>Mijas / Las lagunas</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Motril</td><td>115 €</td><td>160 €</td></tr>
+                <tr><td>Nerja</td><td>70 €</td><td>90 €</td></tr>
+                <tr><td>Nueva Andalucía</td><td>70 €</td><td>90 €</td></tr>
+                <tr><td>Ojén</td><td>70 €</td><td>90 €</td></tr>
+                <tr><td>Parque tecnológico</td><td>25 €</td><td>35 €</td></tr>
+                <tr><td>Periana</td><td>70 €</td><td>98 €</td></tr>
+                <tr><td>Pizarra</td><td>45 €</td><td>63 €</td></tr>
+                <tr><td>Puente Genil</td><td>115 €</td><td>160 €</td></tr>
+                <tr><td>Puerto Banús</td><td>70 €</td><td>90 €</td></tr>
+                <tr><td>Puerto de la Duquesa</td><td>95 €</td><td>135 €</td></tr>
+                <tr><td>Puerto de Santa María</td><td>230 €</td><td>320 €</td></tr>
+                <tr><td>Rincón de la Victoria</td><td>40 €</td><td>55 €</td></tr>
+                <tr><td>Rio Gordo</td><td>55 €</td><td>77 €</td></tr>
+                <tr><td>Ronda</td><td>105 €</td><td>145 €</td></tr>
+                <tr><td>Roquetas de Mar</td><td>205 €</td><td>285 €</td></tr>
+                <tr><td>Sabinillas</td><td>90 €</td><td>125 €</td></tr>
+                <tr><td>Salobreña</td><td>100 €</td><td>140 €</td></tr>
+                <tr><td>San Pedro de Alcántara</td><td>75 €</td><td>105 €</td></tr>
+                <tr><td>San Roque</td><td>115 €</td><td>160 €</td></tr>
+                <tr><td>Santi Petri / Chiclana</td><td>220 €</td><td>310 €</td></tr>
+                <tr><td>Sevilla</td><td>215 €</td><td>300 €</td></tr>
+                <tr><td>Sotogrande</td><td>110 €</td><td>155 €</td></tr>
+                <tr><td>Tarifa</td><td>150 €</td><td>210 €</td></tr>
+                <tr><td>Tolox</td><td>60 €</td><td>85 €</td></tr>
+                <tr><td>Torre del Mar</td><td>55 €</td><td>77 €</td></tr>
+                <tr><td>Torremolinos</td><td>25 €</td><td>35 €</td></tr>
+                <tr><td>Torremuelle</td><td>35 €</td><td>50 €</td></tr>
+                <tr><td>Torrenueva / Mijas</td><td>45 €</td><td>65 €</td></tr>
+                <tr><td>Torrox / Costa</td><td>65 €</td><td>90 €</td></tr>
+                <tr><td>Torrequebrada</td><td>32 €</td><td>45 €</td></tr>
+                <tr><td>Vejer de la Frontera</td><td>195 €</td><td>275 €</td></tr>
+                <tr><td>Vélez-Málaga</td><td>55 €</td><td>77 €</td></tr>
+                <tr><td>Viñuela / Puente don Manuel</td><td>90 €</td><td>125 €</td></tr>
+                <tr><td>Viñuela / Los Romanes</td><td>90 €</td><td>125 €</td></tr>
+                <tr><td>Zahara de los Atunes</td><td>190 €</td><td>265 €</td></tr>
             </tbody>
         </table>
     </header>
     <main>
         <section>
+            <div class="telefono-destacado">
+                📞 ¿Necesitas ayuda? Llama al: <a href="tel:+34630162009">+34 630 162 009</a>
+            </div>
             <h2>🛣️ <span style="text-decoration: underline; color: black;">Reservar</span></h2>
             <form id="reservaForm">
                 <input type="text" id="nombre" placeholder="Nombre completo" required>
