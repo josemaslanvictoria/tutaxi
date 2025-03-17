@@ -64,93 +64,105 @@
         </div>
         <select id="lista-precios" style="width: 100%; display: none; margin-top: 10px;" onchange="mostrarPrecio()">
             <option value="">Selecciona un destino</option>
-            <option value="25|35">Aeropuerto de Málaga (1-4: 25€, 5-9: 35€)</option>
-            <option value="60|85">Marbella (1-4: 60€, 5-9: 85€)</option>
-            <option value="135|175">Granada (1-4: 135€, 5-9: 175€)</option>
-            <option value="40|55">Fuengirola (1-4: 40€, 5-9: 55€)</option>
-            <option value="30|45">Torremolinos (1-4: 30€, 5-9: 45€)</option>
-            <option value="35|50">Benalmádena (1-4: 35€, 5-9: 50€)</option>
-            <option value="75|100">Estepona (1-4: 75€, 5-9: 100€)</option>
-            <option value="90|120">Ronda (1-4: 90€, 5-9: 120€)</option>
-            <option value="70|95">Nerja (1-4: 70€, 5-9: 95€)</option>
-            <option value="80|110">Almuñécar (1-4: 80€, 5-9: 110€)</option>
-        </select>
-        <p id="precio-seleccionado" style="font-size: 14px; margin-top: 10px; display: none;">
-            Precio seleccionado: <span id="precio"></span>
-        </p>
-    </header>
-    <main>
-        <section>
-            <h2>🛣️ Reservar</h2>
-            <form id="reservaForm">
-                <input type="text" id="nombre" placeholder="Nombre completo" required>
-                <input type="text" id="origen" placeholder="Dirección de origen" required>
-                <input type="text" id="destino" placeholder="Dirección de destino" required>
-                <button type="button" onclick="obtenerUbicacion()">Enviar mi ubicación actual</button>
-                <input type="text" id="telefono" placeholder="Teléfono de contacto" required>
-                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)">
-                <textarea id="anotaciones" placeholder="Anotaciones adicionales (opcional)"></textarea>
-                <button type="button" onclick="reservarTaxi()">Reservar</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Taxi Online - Todos los derechos reservados.</p>
-    </footer>
-    <script>
-        function toggleDesplegable() {
-            var desplegable = document.getElementById('lista-precios');
-            var precioSeleccionado = document.getElementById('precio-seleccionado');
-            if (desplegable.style.display === 'none' || desplegable.style.display === '') {
-                desplegable.style.display = 'block';
-                precioSeleccionado.style.display = 'none';
-            } else {
-                desplegable.style.display = 'none';
-                precioSeleccionado.style.display = 'none';
-            }
-        }
-
-        function mostrarPrecio() {
-            var seleccion = document.getElementById('lista-precios').value;
-            var precios = seleccion.split('|');
-            var precioSeleccionado = document.getElementById('precio-seleccionado');
-            var precio = document.getElementById('precio');
-
-            if (seleccion) {
-                precio.innerHTML = `1-4 pasajeros: ${precios[0]}€ | 5-9 pasajeros: ${precios[1]}€`;
-                precioSeleccionado.style.display = 'block';
-            } else {
-                precioSeleccionado.style.display = 'none';
-            }
-        }
-
-        function obtenerUbicacion() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var latitud = position.coords.latitude;
-                    var longitud = position.coords.longitude;
-                    var origen = document.getElementById('origen');
-                    origen.value = "Ubicación actual: " + latitud + ", " + longitud;
-                }, function(error) {
-                    alert("No se pudo obtener la ubicación. Asegúrate de permitir el acceso a la ubicación.");
-                });
-            } else {
-                alert("Tu navegador no soporta geolocalización.");
-            }
-        }
-
-        function reservarTaxi() {
-            var nombre = document.getElementById('nombre').value;
-            var origen = document.getElementById('origen').value;
-            var destino = document.getElementById('destino').value;
-            var telefono = document.getElementById('telefono').value;
-
-            if (nombre && origen && destino && telefono) {
-                alert("Reserva enviada correctamente. Nos pondremos en contacto contigo.");
-            } else {
-                alert("Por favor, completa los campos obligatorios: Nombre, Origen, Destino y Teléfono de contacto.");
-            }
-        }
-    </script>
-</body>
-</html>
+            <option value="175|240">Adra (1-4: 175€, 5-8: 240€)</option>
+            <option value="85|115">Alameda (1-4: 85€, 5-8: 115€)</option>
+            <option value="60|85">Algarrobo-Costa (1-4: 60€, 5-8: 85€)</option>
+            <option value="125|170">Alcaidesa (1-4: 125€, 5-8: 170€)</option>
+            <option value="135|185">Algeciras (1-4: 135€, 5-8: 185€)</option>
+            <option value="28|38">Alhaurín de la Torre (1-4: 28€, 5-8: 38€)</option>
+            <option value="45|61">Alhaurín el Grande (1-4: 45€, 5-8: 61€)</option>
+            <option value="55|75">Álora (1-4: 55€, 5-8: 75€)</option>
+            <option value="230|315">Almería (1-4: 230€, 5-8: 315€)</option>
+            <option value="200|275">Almerimar (1-4: 200€, 5-8: 275€)</option>
+            <option value="100|135">Almuñécar (1-4: 100€, 5-8: 135€)</option>
+            <option value="65|90">Antequera (1-4: 65€, 5-8: 90€)</option>
+            <option value="65|90">Ardales (1-4: 65€, 5-8: 90€)</option>
+            <option value="33|43">Arroyo de la Miel (1-4: 33€, 5-8: 43€)</option>
+            <option value="75|103">Atalaya Park (1-4: 75€, 5-8: 103€)</option>
+            <option value="43|58">Benagalbón (1-4: 43€, 5-8: 58€)</option>
+            <option value="85|115">Benahavis (1-4: 85€, 5-8: 115€)</option>
+            <option value="43|58">Benajarafe (1-4: 43€, 5-8: 58€)</option>
+            <option value="33|43">Benalmadena Costa (1-4: 33€, 5-8: 43€)</option>
+            <option value="33|43">Benalmadena Pueblo (1-4: 33€, 5-8: 43€)</option>
+            <option value="270|370">Cabo de Gata (San José) (1-4: 270€, 5-8: 370€)</option>
+            <option value="55|75">Cabopino / Las Chapas (1-4: 55€, 5-8: 75€)</option>
+            <option value="240|330">Cádiz (1-4: 240€, 5-8: 330€)</option>
+            <option value="50|70">Cala de Mijas (1-4: 50€, 5-8: 70€)</option>
+            <option value="38|53">Cala del Moral (1-4: 38€, 5-8: 53€)</option>
+            <option value="53|75">Calahonda / Miraflores / Mijas (1-4: 53€, 5-8: 75€)</option>
+            <option value="33|48">Cártama (1-4: 33€, 5-8: 48€)</option>
+            <option value="60|82">Caleta de Vélez (1-4: 60€, 5-8: 82€)</option>
+            <option value="85|115">Caminito del Rey (1-4: 85€, 5-8: 115€)</option>
+            <option value="85|115">Campillos (1-4: 85€, 5-8: 115€)</option>
+            <option value="80|110">Cancelada (1-4: 80€, 5-8: 110€)</option>
+            <option value="43|58">Casabermeja (1-4: 43€, 5-8: 58€)</option>
+            <option value="105|140">Casares (1-4: 105€, 5-8: 140€)</option>
+            <option value="43|59">Chilches (1-4: 43€, 5-8: 59€)</option>
+            <option value="46|63">Club la Costa (1-4: 46€, 5-8: 63€)</option>
+            <option value="50|68">Coín (1-4: 50€, 5-8: 68€)</option>
+            <option value="75|103">Cómpeta (1-4: 75€, 5-8: 103€)</option>
+            <option value="225|310">Conil (1-4: 225€, 5-8: 310€)</option>
+            <option value="230|315">Chiclana de la Frontera (1-4: 230€, 5-8: 315€)</option>
+            <option value="180|250">Córdoba (1-4: 180€, 5-8: 250€)</option>
+            <option value="80|110">El Chorro (1-4: 80€, 5-8: 110€)</option>
+            <option value="60|82">Elviria (1-4: 60€, 5-8: 82€)</option>
+            <option value="80|110">Estepona (Marriot playa andaluza) (1-4: 80€, 5-8: 110€)</option>
+            <option value="90|125">Estepona (Elba Gran Hotel/ Hotel Fuerte) (1-4: 90€, 5-8: 125€)</option>
+            <option value="75|103">Frigiliana (1-4: 75€, 5-8: 103€)</option>
+            <option value="43|58">Fuengirola (1-4: 43€, 5-8: 58€)</option>
+            <option value="130|180">Gaucín (1-4: 130€, 5-8: 180€)</option>
+            <option value="135|185">Gibraltar (Frontera) (1-4: 135€, 5-8: 185€)</option>
+            <option value="145|185">Granada (Centro) (1-4: 145€, 5-8: 185€)</option>
+            <option value="180|250">Granada (Sierra nevada) (1-4: 180€, 5-8: 250€)</option>
+            <option value="325|445">Huelva (1-4: 325€, 5-8: 445€)</option>
+            <option value="230|315">Jaén (1-4: 230€, 5-8: 315€)</option>
+            <option value="235|325">Jerez de la Frontera (1-4: 235€, 5-8: 325€)</option>
+            <option value="90|125">La Herradura (1-4: 90€, 5-8: 125€)</option>
+            <option value="130|180">La línea de la Concepción (1-4: 130€, 5-8: 180€)</option>
+            <option value="140|195">La Mamola (1-4: 140€, 5-8: 195€)</option>
+            <option value="85|115">Loja (1-4: 85€, 5-8: 115€)</option>
+            <option value="110|150">Lucena (1-4: 110€, 5-8: 150€)</option>
+            <option value="28|38">Centro de Málaga (1-4: 28€, 5-8: 38€)</option>
+            <option value="28|38">Málaga puerto (1-4: 28€, 5-8: 38€)</option>
+            <option value="100|140">Manilva (1-4: 100€, 5-8: 140€)</option>
+            <option value="65|90">Marbella (centro) (1-4: 65€, 5-8: 90€)</option>
+            <option value="63|86">Marbella (Los monteros/ Río Real) (1-4: 63€, 5-8: 86€)</option>
+            <option value="70|95">Marbella (Golden Mille / Naguelles) (1-4: 70€, 5-8: 95€)</option>
+            <option value="80|110">Marbella (Quinta) (1-4: 80€, 5-8: 110€)</option>
+            <option value="80|110">Marbella (Hotel Villa Padierna) (1-4: 80€, 5-8: 110€)</option>
+            <option value="75|103">Maro (1-4: 75€, 5-8: 103€)</option>
+            <option value="50|70">Mijas (Pueblo) (1-4: 50€, 5-8: 70€)</option>
+            <option value="45|60">Mijas / Las lagunas (1-4: 45€, 5-8: 60€)</option>
+            <option value="120|165">Motril (1-4: 120€, 5-8: 165€)</option>
+            <option value="75|95">Nerja (1-4: 75€, 5-8: 95€)</option>
+            <option value="75|95">Nueva Andalucía (1-4: 75€, 5-8: 95€)</option>
+            <option value="65|90">Ojén (1-4: 65€, 5-8: 90€)</option>
+            <option value="28|38">Parque tecnológico (1-4: 28€, 5-8: 38€)</option>
+            <option value="75|103">Periana (1-4: 75€, 5-8: 103€)</option>
+            <option value="50|68">Pizarra (1-4: 50€, 5-8: 68€)</option>
+            <option value="120|165">Puente Genil (1-4: 120€, 5-8: 165€)</option>
+            <option value="80|100">Puerto Banús (1-4: 80€, 5-8: 100€)</option>
+            <option value="100|140">Puerto de la Duquesa (1-4: 100€, 5-8: 140€)</option>
+            <option value="245|335">Puerto de Santa María (1-4: 245€, 5-8: 335€)</option>
+            <option value="43|58">Rincón de la Victoria (1-4: 43€, 5-8: 58€)</option>
+            <option value="60|82">Rio Gordo (1-4: 60€, 5-8: 82€)</option>
+            <option value="110|150">Ronda (1-4: 110€, 5-8: 150€)</option>
+            <option value="210|290">Roquetas de Mar (1-4: 210€, 5-8: 290€)</option>
+            <option value="95|130">Sabinillas (1-4: 95€, 5-8: 130€)</option>
+            <option value="105|145">Salobreña (1-4: 105€, 5-8: 145€)</option>
+            <option value="80|110">San Pedro de Alcántara (1-4: 80€, 5-8: 110€)</option>
+            <option value="125|175">San Roque (1-4: 125€, 5-8: 175€)</option>
+            <option value="235|325">Santi Petri / Chiclana (1-4: 235€, 5-8: 325€)</option>
+            <option value="230|315">Sevilla (1-4: 230€, 5-8: 315€)</option>
+            <option value="120|165">Sotogrande (1-4: 120€, 5-8: 165€)</option>
+            <option value="165|225">Tarifa (1-4: 165€, 5-8: 225€)</option>
+            <option value="60|90">Tolox (1-4: 60€, 5-8: 90€)</option>
+            <option value="60|82">Torre del Mar (1-4: 60€, 5-8: 82€)</option>
+            <option value="28|38">Torremolinos (1-4: 28€, 5-8: 38€)</option>
+            <option value="38|53">Torremuelle (1-4: 38€, 5-8: 53€)</option>
+            <option value="50|70">Torrenueva / Mijas (1-4: 50€, 5-8: 70€)</option>
+            <option value="70|95">Torrox / Costa (1-4: 70€, 5-8: 95€)</option>
+            <option value="35|48">Torrequebrada (1-4: 35€, 5-8: 48€)</option>
+            <option value="210|290">Vejer de la Frontera (1-4: 210€, 5-8: 290€)</option>
+            <option value="60|82">Vélez-Málaga (1-4: 60€, 5-8: 82€)</option>
+            <option value="95|130">Vi
