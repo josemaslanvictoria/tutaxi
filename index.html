@@ -70,9 +70,17 @@
         .whatsapp-button:hover {
             background-color: #1ebe57;
         }
+        .price-list-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .price-list-icon:hover {
+            color: #007bff;
+        }
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -93,33 +101,44 @@
             Nuestros precios transparentes y conductores profesionales garantizan un traslado cómodo 
             desde Málaga al Aeropuerto, Marbella y Granada. ¡Viaja sin preocupaciones con Taxi Online!
         </p>
+        <div class="price-list-icon" onclick="toggleTablaPrecios()">
+            📋 Ver lista de precios
+        </div>
+        <table id="tabla-precios" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 14px; margin-top: 10px; display: none;">
+            <thead>
+                <tr style="background-color: #f0f0f0;">
+                    <th style="border: 1px solid #ccc; padding: 8px;">Destino</th>
+                    <th style="border: 1px solid #ccc; padding: 8px;">Precio<br><span style='font-size: 12px; display: flex; justify-content: space-around;'><span>1-4</span><span>5-9</span></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Aeropuerto de Málaga</td>
+                    <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>25 €</span><span>35 €</span></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Marbella</td>
+                    <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>60 €</span><span>85 €</span></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px;">Granada</td>
+                    <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>135 €</span><span>175 €</span></td>
+                </tr>
+            </tbody>
+        </table>
     </header>
     <main>
         <section>
             <h2>🛣️ <span style="text-decoration: underline; color: black;">Reservar</span></h2>
             <form id="reservaForm">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin: auto;">
-                    <input list="origenes" id="origen" placeholder="Selecciona origen" style="width: 48%; padding: 8px;" required>
-                    <datalist id="origenes">
-                        <option value="Málaga">
-                        <option value="Aeropuerto de Málaga">
-                        <option value="Marbella">
-                        <option value="Granada">
-                    </datalist>
-                    <input list="destinos" id="destino" placeholder="Selecciona destino" style="width: 48%; padding: 8px; margin-left: 10px;" required>
-                    <datalist id="destinos">
-                        <option value="Aeropuerto de Málaga">
-                        <option value="Marbella">
-                        <option value="Granada">
-                    </datalist>
-                </div>
-                <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
-                    <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)" style="width: 45%; padding: 8px; margin-right: 10px;">
-                    <input type="text" id="telefono" placeholder="Teléfono de contacto" style="width: 45%; padding: 8px;" required>
-                </div>
-                <div style="display: flex; justify-content: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
-                    <textarea id="anotaciones" placeholder="Anotaciones adicionales (opcional)" style="width: 100%; padding: 8px;"></textarea>
-                </div>
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="text" id="origen" placeholder="Dirección de origen" required>
+                <input type="text" id="destino" placeholder="Dirección de destino" required>
+                <button type="button" onclick="obtenerUbicacion()" style="background-color: #007bff; width: 100%;">Enviar mi ubicación actual</button>
+                <input type="text" id="telefono" placeholder="Teléfono de contacto" required>
+                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)">
+                <textarea id="anotaciones" placeholder="Anotaciones adicionales (opcional)"></textarea>
+                <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div>
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
                     <button type="button" onclick="reservarTaxi()" style="width: 50%;">Reservar</button>
                 </div>
@@ -136,26 +155,52 @@
         Contactar
     </a>
     <script>
+        function toggleTablaPrecios() {
+            var tabla = document.getElementById('tabla-precios');
+            if (tabla.style.display === 'none' || tabla.style.display === '') {
+                tabla.style.display = 'table';
+            } else {
+                tabla.style.display = 'none';
+            }
+        }
+
+        function obtenerUbicacion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitud = position.coords.latitude;
+                    var longitud = position.coords.longitude;
+                    var origen = document.getElementById('origen');
+                    origen.value = "Ubicación actual: " + latitud + ", " + longitud;
+                }, function(error) {
+                    alert("No se pudo obtener la ubicación. Asegúrate de permitir el acceso a la ubicación.");
+                });
+            } else {
+                alert("Tu navegador no soporta geolocalización.");
+            }
+        }
+
         function reservarTaxi() {
             var telefonoWhatsApp = '34646571229'; // Tu número de WhatsApp
+            var nombre = document.getElementById('nombre').value;
             var origen = document.getElementById('origen').value;
             var destino = document.getElementById('destino').value;
-            var vuelo = document.getElementById('vuelo').value;
             var telefono = document.getElementById('telefono').value;
+            var vuelo = document.getElementById('vuelo').value;
             var anotaciones = document.getElementById('anotaciones').value;
 
-            if (origen && destino && telefono) {
+            if (nombre && origen && destino && telefono) {
                 var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
+                mensaje += '*Nombre:* ' + nombre + '%0A';
                 mensaje += '*Origen:* ' + origen + '%0A';
                 mensaje += '*Destino:* ' + destino + '%0A';
-                mensaje += '*Número de vuelo:* ' + (vuelo || 'No especificado') + '%0A';
                 mensaje += '*Teléfono de contacto:* ' + telefono + '%0A';
+                mensaje += '*Número de vuelo:* ' + (vuelo || 'No especificado') + '%0A';
                 mensaje += '*Anotaciones:* ' + (anotaciones || 'Ninguna') + '%0A';
                 
                 var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
                 window.open(enlaceWhatsApp, '_blank');
             } else {
-                alert('Por favor, completa los campos obligatorios: Origen, Destino y Teléfono de contacto.');
+                alert('Por favor, completa los campos obligatorios: Nombre, Origen, Destino y Teléfono de contacto.');
             }
         }
     </script>
