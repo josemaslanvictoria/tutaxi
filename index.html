@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserva tu taxi online en Málaga, Marbella y Granada. Servicio rápido, seguro y con precios transparentes. ¡Viaja sin preocupaciones con Taxi Online!">
+    <meta name="keywords" content="taxi, taxi online, reserva taxi, taxi Málaga, taxi aeropuerto Málaga, taxi Marbella, taxi Granada">
+    <meta name="author" content="Taxi Online">
+    <meta property="og:title" content="Taxi Online - Reserva tu taxi rápido y seguro">
+    <meta property="og:description" content="Reserva tu taxi online en Málaga, Marbella y Granada. Servicio rápido, seguro y con precios transparentes.">
+    <meta property="og:image" content="https://ejemplo.com/taxi-online.jpg">
+    <meta property="og:url" content="https://ejemplo.com">
     <title>Taxi Online - Reserva tu taxi rápido y seguro</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +30,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-        select, input, button {
+        input, select, button, textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -34,135 +42,183 @@
             background-color: #28a745;
             color: white;
             border: none;
+            font-size: 18px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #218838;
         }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            background-color: #1ebe57;
+        }
         .price-list-icon {
             cursor: pointer;
             font-size: 24px;
             margin-top: 10px;
+            color: #007bff;
         }
         .price-list-icon:hover {
-            color: #007bff;
+            text-decoration: underline;
+        }
+        #tabla-precios {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        #tabla-precios th, #tabla-precios td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        #tabla-precios th {
+            background-color: #f0f0f0;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+            }
+            input, button {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
-<body>
+<body style="overflow-y: auto;">
     <header>
-        <h1>🚖 ¡Bienvenido a Taxi Online! 🚖</h1>
-        <p><strong>Solicita tu taxi de manera rápida y sencilla.</strong></p>
-        <p style="font-size: 14px; text-align: justify;">
+        <h1>🚖 <u>¡Bienvenido a Taxi Online!</u> 🚖</h1>
+        <p><span style="font-weight: bold;">Solicita tu taxi de manera rápida y sencilla.</span></p>
+        <p style="font-size: 14px; text-align: justify; margin-top: 10px;">
             Reserva tu taxi con nosotros y disfruta de un servicio confiable, rápido y seguro. 
             Nuestros precios transparentes y conductores profesionales garantizan un traslado cómodo 
             desde Málaga al Aeropuerto, Marbella y Granada. ¡Viaja sin preocupaciones con Taxi Online!
         </p>
-        <div class="price-list-icon" onclick="toggleDesplegable()">
+        <div class="price-list-icon" onclick="toggleTablaPrecios()">
             📋 Ver lista de precios
         </div>
-        <select id="lista-precios" style="width: 100%; display: none; margin-top: 10px;" onchange="mostrarPrecio()">
-            <option value="">Selecciona un destino</option>
-            <option value="175|240">Adra (1-4: 175€, 5-8: 240€)</option>
-            <option value="85|115">Alameda (1-4: 85€, 5-8: 115€)</option>
-            <option value="60|85">Algarrobo-Costa (1-4: 60€, 5-8: 85€)</option>
-            <option value="125|170">Alcaidesa (1-4: 125€, 5-8: 170€)</option>
-            <option value="135|185">Algeciras (1-4: 135€, 5-8: 185€)</option>
-            <option value="28|38">Alhaurín de la Torre (1-4: 28€, 5-8: 38€)</option>
-            <option value="45|61">Alhaurín el Grande (1-4: 45€, 5-8: 61€)</option>
-            <option value="55|75">Álora (1-4: 55€, 5-8: 75€)</option>
-            <option value="230|315">Almería (1-4: 230€, 5-8: 315€)</option>
-            <option value="200|275">Almerimar (1-4: 200€, 5-8: 275€)</option>
-            <option value="100|135">Almuñécar (1-4: 100€, 5-8: 135€)</option>
-            <option value="65|90">Antequera (1-4: 65€, 5-8: 90€)</option>
-            <option value="65|90">Ardales (1-4: 65€, 5-8: 90€)</option>
-            <option value="33|43">Arroyo de la Miel (1-4: 33€, 5-8: 43€)</option>
-            <option value="75|103">Atalaya Park (1-4: 75€, 5-8: 103€)</option>
-            <option value="43|58">Benagalbón (1-4: 43€, 5-8: 58€)</option>
-            <option value="85|115">Benahavis (1-4: 85€, 5-8: 115€)</option>
-            <option value="43|58">Benajarafe (1-4: 43€, 5-8: 58€)</option>
-            <option value="33|43">Benalmadena Costa (1-4: 33€, 5-8: 43€)</option>
-            <option value="33|43">Benalmadena Pueblo (1-4: 33€, 5-8: 43€)</option>
-            <option value="270|370">Cabo de Gata (San José) (1-4: 270€, 5-8: 370€)</option>
-            <option value="55|75">Cabopino / Las Chapas (1-4: 55€, 5-8: 75€)</option>
-            <option value="240|330">Cádiz (1-4: 240€, 5-8: 330€)</option>
-            <option value="50|70">Cala de Mijas (1-4: 50€, 5-8: 70€)</option>
-            <option value="38|53">Cala del Moral (1-4: 38€, 5-8: 53€)</option>
-            <option value="53|75">Calahonda / Miraflores / Mijas (1-4: 53€, 5-8: 75€)</option>
-            <option value="33|48">Cártama (1-4: 33€, 5-8: 48€)</option>
-            <option value="60|82">Caleta de Vélez (1-4: 60€, 5-8: 82€)</option>
-            <option value="85|115">Caminito del Rey (1-4: 85€, 5-8: 115€)</option>
-            <option value="85|115">Campillos (1-4: 85€, 5-8: 115€)</option>
-            <option value="80|110">Cancelada (1-4: 80€, 5-8: 110€)</option>
-            <option value="43|58">Casabermeja (1-4: 43€, 5-8: 58€)</option>
-            <option value="105|140">Casares (1-4: 105€, 5-8: 140€)</option>
-            <option value="43|59">Chilches (1-4: 43€, 5-8: 59€)</option>
-            <option value="46|63">Club la Costa (1-4: 46€, 5-8: 63€)</option>
-            <option value="50|68">Coín (1-4: 50€, 5-8: 68€)</option>
-            <option value="75|103">Cómpeta (1-4: 75€, 5-8: 103€)</option>
-            <option value="225|310">Conil (1-4: 225€, 5-8: 310€)</option>
-            <option value="230|315">Chiclana de la Frontera (1-4: 230€, 5-8: 315€)</option>
-            <option value="180|250">Córdoba (1-4: 180€, 5-8: 250€)</option>
-            <option value="80|110">El Chorro (1-4: 80€, 5-8: 110€)</option>
-            <option value="60|82">Elviria (1-4: 60€, 5-8: 82€)</option>
-            <option value="80|110">Estepona (Marriot playa andaluza) (1-4: 80€, 5-8: 110€)</option>
-            <option value="90|125">Estepona (Elba Gran Hotel/ Hotel Fuerte) (1-4: 90€, 5-8: 125€)</option>
-            <option value="75|103">Frigiliana (1-4: 75€, 5-8: 103€)</option>
-            <option value="43|58">Fuengirola (1-4: 43€, 5-8: 58€)</option>
-            <option value="130|180">Gaucín (1-4: 130€, 5-8: 180€)</option>
-            <option value="135|185">Gibraltar (Frontera) (1-4: 135€, 5-8: 185€)</option>
-            <option value="145|185">Granada (Centro) (1-4: 145€, 5-8: 185€)</option>
-            <option value="180|250">Granada (Sierra nevada) (1-4: 180€, 5-8: 250€)</option>
-            <option value="325|445">Huelva (1-4: 325€, 5-8: 445€)</option>
-            <option value="230|315">Jaén (1-4: 230€, 5-8: 315€)</option>
-            <option value="235|325">Jerez de la Frontera (1-4: 235€, 5-8: 325€)</option>
-            <option value="90|125">La Herradura (1-4: 90€, 5-8: 125€)</option>
-            <option value="130|180">La línea de la Concepción (1-4: 130€, 5-8: 180€)</option>
-            <option value="140|195">La Mamola (1-4: 140€, 5-8: 195€)</option>
-            <option value="85|115">Loja (1-4: 85€, 5-8: 115€)</option>
-            <option value="110|150">Lucena (1-4: 110€, 5-8: 150€)</option>
-            <option value="28|38">Centro de Málaga (1-4: 28€, 5-8: 38€)</option>
-            <option value="28|38">Málaga puerto (1-4: 28€, 5-8: 38€)</option>
-            <option value="100|140">Manilva (1-4: 100€, 5-8: 140€)</option>
-            <option value="65|90">Marbella (centro) (1-4: 65€, 5-8: 90€)</option>
-            <option value="63|86">Marbella (Los monteros/ Río Real) (1-4: 63€, 5-8: 86€)</option>
-            <option value="70|95">Marbella (Golden Mille / Naguelles) (1-4: 70€, 5-8: 95€)</option>
-            <option value="80|110">Marbella (Quinta) (1-4: 80€, 5-8: 110€)</option>
-            <option value="80|110">Marbella (Hotel Villa Padierna) (1-4: 80€, 5-8: 110€)</option>
-            <option value="75|103">Maro (1-4: 75€, 5-8: 103€)</option>
-            <option value="50|70">Mijas (Pueblo) (1-4: 50€, 5-8: 70€)</option>
-            <option value="45|60">Mijas / Las lagunas (1-4: 45€, 5-8: 60€)</option>
-            <option value="120|165">Motril (1-4: 120€, 5-8: 165€)</option>
-            <option value="75|95">Nerja (1-4: 75€, 5-8: 95€)</option>
-            <option value="75|95">Nueva Andalucía (1-4: 75€, 5-8: 95€)</option>
-            <option value="65|90">Ojén (1-4: 65€, 5-8: 90€)</option>
-            <option value="28|38">Parque tecnológico (1-4: 28€, 5-8: 38€)</option>
-            <option value="75|103">Periana (1-4: 75€, 5-8: 103€)</option>
-            <option value="50|68">Pizarra (1-4: 50€, 5-8: 68€)</option>
-            <option value="120|165">Puente Genil (1-4: 120€, 5-8: 165€)</option>
-            <option value="80|100">Puerto Banús (1-4: 80€, 5-8: 100€)</option>
-            <option value="100|140">Puerto de la Duquesa (1-4: 100€, 5-8: 140€)</option>
-            <option value="245|335">Puerto de Santa María (1-4: 245€, 5-8: 335€)</option>
-            <option value="43|58">Rincón de la Victoria (1-4: 43€, 5-8: 58€)</option>
-            <option value="60|82">Rio Gordo (1-4: 60€, 5-8: 82€)</option>
-            <option value="110|150">Ronda (1-4: 110€, 5-8: 150€)</option>
-            <option value="210|290">Roquetas de Mar (1-4: 210€, 5-8: 290€)</option>
-            <option value="95|130">Sabinillas (1-4: 95€, 5-8: 130€)</option>
-            <option value="105|145">Salobreña (1-4: 105€, 5-8: 145€)</option>
-            <option value="80|110">San Pedro de Alcántara (1-4: 80€, 5-8: 110€)</option>
-            <option value="125|175">San Roque (1-4: 125€, 5-8: 175€)</option>
-            <option value="235|325">Santi Petri / Chiclana (1-4: 235€, 5-8: 325€)</option>
-            <option value="230|315">Sevilla (1-4: 230€, 5-8: 315€)</option>
-            <option value="120|165">Sotogrande (1-4: 120€, 5-8: 165€)</option>
-            <option value="165|225">Tarifa (1-4: 165€, 5-8: 225€)</option>
-            <option value="60|90">Tolox (1-4: 60€, 5-8: 90€)</option>
-            <option value="60|82">Torre del Mar (1-4: 60€, 5-8: 82€)</option>
-            <option value="28|38">Torremolinos (1-4: 28€, 5-8: 38€)</option>
-            <option value="38|53">Torremuelle (1-4: 38€, 5-8: 53€)</option>
-            <option value="50|70">Torrenueva / Mijas (1-4: 50€, 5-8: 70€)</option>
-            <option value="70|95">Torrox / Costa (1-4: 70€, 5-8: 95€)</option>
-            <option value="35|48">Torrequebrada (1-4: 35€, 5-8: 48€)</option>
-            <option value="210|290">Vejer de la Frontera (1-4: 210€, 5-8: 290€)</option>
-            <option value="60|82">Vélez-Málaga (1-4: 60€, 5-8: 82€)</option>
-            <option value="95|130">Vi
+        <table id="tabla-precios">
+            <thead>
+                <tr>
+                    <th>Destino</th>
+                    <th>Precio<br><span style='font-size: 12px; display: flex; justify-content: space-around;'><span>1-4</span><span>5-9</span></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aeropuerto de Málaga</td>
+                    <td style="display: flex; justify-content: space-around;"><span>25 €</span><span>35 €</span></td>
+                </tr>
+                <tr>
+                    <td>Marbella</td>
+                    <td style="display: flex; justify-content: space-around;"><span>60 €</span><span>85 €</span></td>
+                </tr>
+                <tr>
+                    <td>Granada</td>
+                    <td style="display: flex; justify-content: space-around;"><span>135 €</span><span>175 €</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+    <main>
+        <section>
+            <h2>🛣️ <span style="text-decoration: underline; color: black;">Reservar</span></h2>
+            <form id="reservaForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="text" id="origen" placeholder="Dirección de origen" required>
+                <input type="text" id="destino" placeholder="Dirección de destino" required>
+                <button type="button" onclick="obtenerUbicacion()" style="background-color: #007bff; width: 100%;">Enviar mi ubicación actual</button>
+                <input type="text" id="telefono" placeholder="Teléfono de contacto" required>
+                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)">
+                <textarea id="anotaciones" placeholder="Anotaciones adicionales (opcional)"></textarea>
+                <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="button" onclick="reservarTaxi()" style="width: 50%;">Reservar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Taxi Online - Todos los derechos reservados.</p>
+        <p>📞 Teléfono: <a href="tel:+34630162009">+34 630 162 009</a></p>
+        <p>📲 ¿Necesitas ayuda? <a href="https://wa.me/34646571229" target="_blank">Chatea con nosotros en WhatsApp Business</a></p>
+    </footer>
+    <a href="https://wa.me/34646571229" target="_blank" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30" style="vertical-align: middle; margin-right: 10px;">
+        Contactar
+    </a>
+    <script>
+        function toggleTablaPrecios() {
+            var tabla = document.getElementById('tabla-precios');
+            if (tabla.style.display === 'none' || tabla.style.display === '') {
+                tabla.style.display = 'table';
+            } else {
+                tabla.style.display = 'none';
+            }
+        }
+
+        function obtenerUbicacion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitud = position.coords.latitude;
+                    var longitud = position.coords.longitude;
+                    var origen = document.getElementById('origen');
+                    origen.value = "Ubicación actual: " + latitud + ", " + longitud;
+                }, function(error) {
+                    alert("No se pudo obtener la ubicación. Asegúrate de permitir el acceso a la ubicación.");
+                });
+            } else {
+                alert("Tu navegador no soporta geolocalización.");
+            }
+        }
+
+        function reservarTaxi() {
+            var telefonoWhatsApp = '34646571229'; // Tu número de WhatsApp
+            var nombre = document.getElementById('nombre').value;
+            var origen = document.getElementById('origen').value;
+            var destino = document.getElementById('destino').value;
+            var telefono = document.getElementById('telefono').value;
+            var vuelo = document.getElementById('vuelo').value;
+            var anotaciones = document.getElementById('anotaciones').value;
+
+            if (nombre && origen && destino && telefono) {
+                var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
+                mensaje += '*Nombre:* ' + nombre + '%0A';
+                mensaje += '*Origen:* ' + origen + '%0A';
+                mensaje += '*Destino:* ' + destino + '%0A';
+                mensaje += '*Teléfono de contacto:* ' + telefono + '%0A';
+                mensaje += '*Número de vuelo:* ' + (vuelo || 'No especificado') + '%0A';
+                mensaje += '*Anotaciones:* ' + (anotaciones || 'Ninguna') + '%0A';
+                
+                var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
+                window.open(enlaceWhatsApp, '_blank');
+            } else {
+                alert('Por favor, completa los campos obligatorios: Nombre, Origen, Destino y Teléfono de contacto.');
+            }
+        }
+    </script>
+</body>
+</html>
