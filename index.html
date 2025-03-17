@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Online</title>
+    <meta name="description" content="Reserva tu taxi online en Málaga, Marbella y Granada. Servicio rápido, seguro y con precios transparentes. ¡Viaja sin preocupaciones con Taxi Online!">
+    <meta name="keywords" content="taxi, taxi online, reserva taxi, taxi Málaga, taxi aeropuerto Málaga, taxi Marbella, taxi Granada">
+    <meta name="author" content="Taxi Online">
+    <meta property="og:title" content="Taxi Online - Reserva tu taxi rápido y seguro">
+    <meta property="og:description" content="Reserva tu taxi online en Málaga, Marbella y Granada. Servicio rápido, seguro y con precios transparentes.">
+    <meta property="og:image" content="https://ejemplo.com/taxi-online.jpg">
+    <meta property="og:url" content="https://ejemplo.com">
+    <title>Taxi Online - Reserva tu taxi rápido y seguro</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,11 +19,16 @@
             margin: 0;
             padding: 0;
             background-color: #f8f9fa;
+            color: #333;
         }
         header, main, footer {
             max-width: 600px;
             margin: auto;
             padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         input, select, button, textarea {
             width: 100%;
@@ -23,28 +36,39 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
         }
         button {
-            background-color: green;
+            background-color: #28a745;
+            color: white;
             border: none;
             font-size: 18px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .language-selector {
+        button:hover {
+            background-color: #218838;
+        }
+        .whatsapp-button {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
         }
-        .language-dropdown img {
-            display: block;
-            width: 30px;
-            height: 20px;
-            padding: 5px;
-            cursor: pointer;
-        }
-        .language-dropdown img:hover {
-            background: #f0f0f0;
+        .whatsapp-button:hover {
+            background-color: #1ebe57;
         }
         @media (max-width: 600px) {
             h1 {
@@ -72,164 +96,68 @@
     </header>
     <main>
         <section>
-            <h3>💰 Tarifas desde Málaga</h3>
-            <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <button onclick="toggleTablaPrecios()" style="background-color: #007bff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Ver precios</button>
-            </div>
-            <script>
-                function toggleTablaPrecios() {
-                    var tabla = document.getElementById('tabla-precios-completa');
-                    if (tabla.style.display === 'none' || tabla.style.display === '') {
-                        tabla.style.display = 'table';
-                    } else {
-                        tabla.style.display = 'none';
-                    }
-                }
-            </script>
-            <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <button onclick="window.location.href='#tabla-precios'" style="background-color: #007bff; color: white; font-size: 16px; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Ver precios</button>
-            </div>
-            
-            <script>
-                function togglePrecios() {
-            window.location.href = '#tabla-precios';
-                    var tabla = document.querySelector('table');
-                    if (tabla.style.display === 'none') {
-                        tabla.style.display = 'table';
-                    } else {
-                        tabla.style.display = 'none';
-                    }
-                }
-            </script>
-            <table id="tabla-precios" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 14px; margin-bottom: 5px;">
-                <thead>
-                    <tr style="background-color: #f0f0f0;">
-                        <th style="border: 1px solid #ccc; padding: 8px;">Destino</th>
-                        <th style="border: 1px solid #ccc; padding: 8px;">Precio<br><span style='font-size: 12px; display: flex; justify-content: space-around;'><span>1-4</span><span>5-9</span></span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="border: 1px solid #ccc; padding: 8px;">Aeropuerto de Málaga</td>
-                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>25 €</span><span>35 €</span></td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ccc; padding: 8px;">Marbella</td>
-                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>60 €</span><span>85 €</span></td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ccc; padding: 8px;">Granada</td>
-                        <td style="border: 1px solid #ccc; padding: 8px; display: flex; justify-content: space-around;"><span>135 €</span><span>175 €</span></td>
-                    </tr>
-                </tbody>
-            </table>
             <h2>🛣️ <span style="text-decoration: underline; color: black;">Reservar</span></h2>
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin: auto;">
-                <input list="origenes" id="origen" placeholder="Selecciona origen" style="width: 48%; padding: 8px;">
-                <datalist id="origenes">
-                    <option value="Málaga">
-                    <option value="Aeropuerto de Málaga">
-                    <option value="Marbella">
-                    <option value="Granada">
-                </datalist>
-                <input list="destinos" id="destino" placeholder="Selecciona destino" style="width: 48%; padding: 8px; margin-left: 10px;">
-                <datalist id="destinos">
-                    <option value="Aeropuerto de Málaga">
-                    <option value="Marbella">
-                    <option value="Granada">
-                </datalist>
-            </div>
-            
-                <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
-                <select id="pasajeros" style="width: 30%; padding: 8px; text-align: center;">
+            <form id="reservaForm">
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin: auto;">
-                    <option value="">Pasajeros</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
-                </select>
-                <input type="date" id="fecha" style="width: 30%; padding: 8px; text-align: center;">
-                <input type="time" id="hora" style="width: 30%; padding: 8px; text-align: center;">
-                </div>
+                    <input list="origenes" id="origen" placeholder="Selecciona origen" style="width: 48%; padding: 8px;" required>
+                    <datalist id="origenes">
+                        <option value="Málaga">
+                        <option value="Aeropuerto de Málaga">
+                        <option value="Marbella">
+                        <option value="Granada">
+                    </datalist>
+                    <input list="destinos" id="destino" placeholder="Selecciona destino" style="width: 48%; padding: 8px; margin-left: 10px;" required>
+                    <datalist id="destinos">
+                        <option value="Aeropuerto de Málaga">
+                        <option value="Marbella">
+                        <option value="Granada">
+                    </datalist>
                 </div>
                 <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
-                <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)" style="width: 45%; padding: 8px; margin-right: 10px;">
-                <textarea id="extras" placeholder="Detalles adicionales" style="width: 45%; padding: 8px;"></textarea>
-            </div>
-            </div>
+                    <input type="text" id="vuelo" placeholder="Número de vuelo (opcional)" style="width: 45%; padding: 8px; margin-right: 10px;">
+                    <input type="text" id="telefono" placeholder="Teléfono de contacto" style="width: 45%; padding: 8px;" required>
+                </div>
+                <div style="display: flex; justify-content: center; width: 100%; max-width: 600px; margin: auto; margin-top: 15px;">
+                    <textarea id="anotaciones" placeholder="Anotaciones adicionales (opcional)" style="width: 100%; padding: 8px;"></textarea>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="button" onclick="reservarTaxi()" style="width: 50%;">Reservar</button>
+                </div>
+            </form>
         </section>
-        <p id="precioTaxi" style="font-size: 18px; font-weight: bold; color: red; display: none;">Precio: </p>
-        <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <button onclick="reservarTaxi()" style="width: 50%;">Reservar</button>
-        </div>
     </main>
-    <script>
-        function reservarTaxi() {
-            var telefonoWhatsApp = '34646571229';
-            var origen = document.getElementById('origen').value;
-            var destino = document.getElementById('destino').value;
-            var pasajeros = document.getElementById('pasajeros').value;
-            var fecha = document.getElementById('fecha').value;
-            var hora = document.getElementById('hora').value;
-            var vuelo = document.getElementById('vuelo').value;
-            var extras = document.getElementById('extras').value;
-
-            if ((origen && destino && pasajeros && fecha && hora) && vuelo && extras) {
-                var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
-                mensaje += '*Origen:* ' + origen + '%0A';
-                mensaje += '*Destino:* ' + destino + '%0A';
-                mensaje += '*Pasajeros:* ' + pasajeros + '%0A';
-                mensaje += '*Fecha:* ' + fecha + '%0A';
-                mensaje += '*Hora:* ' + hora + '%0A';
-                mensaje += '*Número de vuelo:* ' + vuelo + '%0A';
-                mensaje += '*Extras:* ' + extras + '%0A';
-                
-                var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
-                window.open(enlaceWhatsApp, '_blank');
-            } else {
-                alert('Por favor, completa todos los campos obligatorios.');
-            }
-        }
-    </script>
     <footer>
         <p>&copy; 2025 Taxi Online - Todos los derechos reservados.</p>
+        <p>📞 Teléfono: <a href="tel:+34630162009">+34 630 162 009</a></p>
         <p>📲 ¿Necesitas ayuda? <a href="https://wa.me/34646571229" target="_blank">Chatea con nosotros en WhatsApp Business</a></p>
     </footer>
-</body>
     <a href="https://wa.me/34646571229" target="_blank" class="whatsapp-button">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30" style="vertical-align: middle; margin-right: 10px;">
         Contactar
     </a>
-    <style>
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            padding: 15px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background-color 0.3s ease;
+    <script>
+        function reservarTaxi() {
+            var telefonoWhatsApp = '34646571229'; // Tu número de WhatsApp
+            var origen = document.getElementById('origen').value;
+            var destino = document.getElementById('destino').value;
+            var vuelo = document.getElementById('vuelo').value;
+            var telefono = document.getElementById('telefono').value;
+            var anotaciones = document.getElementById('anotaciones').value;
+
+            if (origen && destino && telefono) {
+                var mensaje = '🚖 *Nueva Reserva de Taxi* 🚖%0A%0A';
+                mensaje += '*Origen:* ' + origen + '%0A';
+                mensaje += '*Destino:* ' + destino + '%0A';
+                mensaje += '*Número de vuelo:* ' + (vuelo || 'No especificado') + '%0A';
+                mensaje += '*Teléfono de contacto:* ' + telefono + '%0A';
+                mensaje += '*Anotaciones:* ' + (anotaciones || 'Ninguna') + '%0A';
+                
+                var enlaceWhatsApp = 'https://wa.me/' + telefonoWhatsApp + '?text=' + mensaje;
+                window.open(enlaceWhatsApp, '_blank');
+            } else {
+                alert('Por favor, completa los campos obligatorios: Origen, Destino y Teléfono de contacto.');
+            }
         }
-        .whatsapp-button:hover {
-            background-color: #1ebe57;
-        }
-    </style>
+    </script>
+</body>
 </html>
-
-
